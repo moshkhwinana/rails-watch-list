@@ -5,7 +5,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @movies = @list.movies
+    # @movies = @list.movies
     # or @movies = @list.bookmarks
     # or @bookmarks = Bookmark.all
   end
@@ -21,11 +21,6 @@ class ListsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @list.destroy
-    redirect_to lists_path, status: :see_other
   end
 
   private

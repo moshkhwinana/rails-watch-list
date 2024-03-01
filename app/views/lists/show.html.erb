@@ -1,9 +1,15 @@
 <h1> <%= @list.name %></h1>
-<ul>
+
   <% @list.movies.each do |movie| %>
-    <li><%= @movie.title %></li>
-    <li><%= @movie.overview %></li>
-    <li><%= @movie.poster_url %></li>
-    <li><%= @movie.rating %></li>
+  <% @bookmark = Bookmark.find_by(list: @list, movie: movie) %> <!--find the bookmark where the list_id is = to @list and where the movie_id is equal to the temp var of movie !-->
+  <div class="card">
+    <h2><%= movie.title %><%= movie.rating %></h2>
+    <p><%= movie.overview %></p>
+    <p><%= movie.poster_url %></p>
+    <%= link_to "Delete", bookmark_path(@bookmark),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  </div>
   <% end %>
-</ul>
+
+<%= link_to 'Add movie', new_list_bookmark_path(@list) %>
+<%= link_to 'Back to menu', list_path(@list) %>

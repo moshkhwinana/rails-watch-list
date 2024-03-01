@@ -1,7 +1,15 @@
-<h1>Movie Categories</h1>
+<div class="container justify">
+  <div class="card d-flex align-items-center justify-content-center mb-4">
+    <h1><strong>Have fun:) Save any movie</strong></h1>
+  </div>
+  <div class="btn btn primary mb-2 ">
+      <%= link_to 'Add new category', new_list_path(@list) %>
+  </div>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
+  <h3><strong>Movie Categories</strong></h3>
+  <ul class="d-flex justify-content-between">
+    <% @lists.each do |list| %>
+      <li class="card"><%= link_to list.name, list_path(list) %></li>
+    <% end %>
+  </ul>
+</div>
