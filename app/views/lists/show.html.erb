@@ -1,15 +1,21 @@
-<h1> <%= @list.name %></h1>
-
-  <% @list.movies.each do |movie| %>
-  <% @bookmark = Bookmark.find_by(list: @list, movie: movie) %> <!--find the bookmark where the list_id is = to @list and where the movie_id is equal to the temp var of movie !-->
-  <div class="card">
-    <h2><%= movie.title %><%= movie.rating %></h2>
-    <p><%= movie.overview %></p>
-    <p><%= movie.poster_url %></p>
-    <%= link_to "Delete", bookmark_path(@bookmark),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<div class="container align-items-center">
+  <h1 class="text-center mb-6"> <%= @list.name %></h1>
+    <% @list.movies.each do |movie| %>
+    <% @bookmark = Bookmark.find_by(list: @list, movie: movie) %> <!--find the bookmark where the list_id is = to @list and where the movie_id is equal to the temp var of movie !-->
+    <div class="card text-center p-4 m-4 d-flex justify-content-between">
+      <h2><%= movie.title %><%= movie.rating %></h2>
+      <p><%= movie.overview %></p>
+      <p><%= movie.poster_url %></p>
+      <p><%= @bookmark.comment %></p>
+      <div class="btn btn dark">
+       <%= link_to "Delete", bookmark_path(@bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-dark justify-content-end mt-3 mb-3 bg-white text-dark" %>
+      </div>
+    </div>
+    <% end %>
+  <div class="btn btn dark">
+    <%= link_to 'Add movie', new_list_bookmark_path(@list), class: "btn btn-dark justify-content-end mt-3 mb-3 bg-white text-dark" %>
   </div>
-  <% end %>
-
-<%= link_to 'Add movie', new_list_bookmark_path(@list) %>
-<%= link_to 'Back to menu', list_path(@list) %>
+  <div class="btn btn dark">
+    <%= link_to 'Back to menu', lists_path, class: "btn btn-dark justify-content-end mt-3 mb-3 bg-white text-dark" %>
+  </div>
+</div>
