@@ -3,7 +3,7 @@
     <% @list.movies.each do |movie| %>
     <% @bookmark = Bookmark.find_by(list: @list, movie: movie) %> <!--find the bookmark where the list_id is = to @list and where the movie_id is equal to the temp var of movie !-->
     <div class="card text-center p-4 m-4 d-flex justify-content-between">
-      <h2><%= movie.title %><%= movie.rating %></h2>
+      <h2><%= movie.title %> <%= - movie.rating %> <i class="fa-solid fa-star"></i></h2>
       <p><%= movie.overview %></p>
       <p><%= movie.poster_url %></p>
       <p><%= @bookmark.comment %></p>
