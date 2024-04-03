@@ -10,7 +10,7 @@
 
     <div class="card" id="mc">
       <h1 class="text-center mb-4"><strong>Movie Categories</strong></h1>
-      <ul class="d-flex justify-content-between"  id="ul">
+      <ul class="d-flex justify-content-center"  id="ul">
         <% @lists.each do |list| %>
           <li class="card rounded" id="category"><%= link_to list.name, list_path(list), class: "text-dark" %></li>
         <% end %>
