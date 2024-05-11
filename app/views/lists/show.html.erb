@@ -1,4 +1,4 @@
-<div class="container align-items-center">
+<div class="container-show align-items-center">
   <h1 class="text-center mb-6"> <%= @list.name %></h1>
     <% @list.movies.each do |movie| %>
     <% @bookmark = Bookmark.find_by(list: @list, movie: movie) %> <!--find the bookmark where the list_id is = to @list and where the movie_id is equal to the temp var of movie !-->
